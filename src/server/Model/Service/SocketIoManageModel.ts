@@ -5,7 +5,7 @@ import Model from '../Model';
 
 interface SocketIoManageModelInterface extends Model {
     initialize(server: http.Server): void;
-    getSockets(): SocketIO.Namespace;
+    getSockets(): socketio.Namespace;
     notifyClient(): void;
 }
 
@@ -14,7 +14,7 @@ interface SocketIoManageModelInterface extends Model {
  * socket.io の設定を行う
  */
 class SocketIoManageModel extends Model implements SocketIoManageModelInterface {
-    private io: SocketIO.Server | null = null;
+    private io: socketio.Server | null = null;
 
     /**
      * http.Server セット
@@ -30,7 +30,7 @@ class SocketIoManageModel extends Model implements SocketIoManageModelInterface 
      * socket を返す
      * @return SocketIO.Namespace
      */
-    public getSockets(): SocketIO.Namespace {
+    public getSockets(): socketio.Namespace {
         if (this.io === null) {
             throw new Error('must call SocketIoManageModel initialize');
         }
